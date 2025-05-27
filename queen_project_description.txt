@@ -1,0 +1,168 @@
+
+
+---
+
+### **EER Textual Scheme**
+
+#### **Entities:**
+
+1. **Radio**
+
+   * *ID\_Radio* (PK)
+   * Nome\_Radio
+   * Descrizione\_Radio
+   * Frequenza
+   * Tipologia\_Radio
+
+2. **Report**
+
+   * *ID\_Report* (PK)
+   * Data\_Report
+   * Firma
+   * Descrizione\_Report
+
+3. **Programma**
+
+   * *ID\_Programma* (PK)
+   * Trama\_Programma
+
+4. **Pubblicità** (ISA Programma)
+
+   * *ID\_Pubblicita* (PK, FK from Programma)
+   * Prodotto\_Promosso
+   * Slogan
+
+5. **Playlist\_Musicale** (ISA Programma)
+
+   * *ID\_Playlist* (PK, FK from Programma)
+   * Nome\_Playlist
+   * Descrizione\_Playlist
+
+6. **Content\_Playlist**
+
+   * *ID\_Content\_Playlist* (PK)
+   * Ordine
+   * Tipo\_Contenuto (Brano o Episodio)
+
+7. **Brano**
+
+   * *ID\_Brano* (PK)
+   * Nome\_Brano
+   * Durata
+
+8. **Episodio**
+
+   * *ID\_Episodio* (PK)
+   * Titolo
+   * Durata
+   * Trama\_e\_Descrizione
+
+9. **Trasmissione**
+
+   * *ID\_Trasmissione* (PK)
+   * Data\_Trasmissione
+   * Ora\_Inizio
+   * Ora\_Fine
+
+10. **Persona**
+
+    * *ID\_Persona* (PK)
+    * Nome
+    * Cognome
+    * Data\_Nascita
+    * Luogo\_Nascita
+
+11. **Dipendente** (ISA Persona)
+
+    * *ID\_Dipendente* (PK, FK from Persona)
+
+12. **Cantante** (ISA Persona)
+
+    * *ID\_Cantante* (PK, FK from Persona)
+    * Pseudonimo
+    * Data\_Inizio\_Carriera
+
+13. **Professione**
+
+    * *ID\_Professione* (PK)
+    * Descrizione\_Professione
+    * Campo\_Professione
+
+14. **Contratto**
+
+    * *ID\_Contratto* (PK)
+    * Data\_Inizio
+    * Durata
+    * Ricavo
+
+15. **Contratto\_Sponsor** (ISA Contratto)
+
+    * *ID\_ContrattoSponsor* (PK, FK from Contratto)
+
+16. **Contratto\_Dipendente** (ISA Contratto)
+
+    * *ID\_Contratto\_Dipendente* (PK, FK from Contratto)
+
+17. **Reparto**
+
+    * *ID\_Reparto* (PK)
+    * Nome\_Reparto
+    * Descrizione\_Reparto
+
+18. **Partecipazione**
+
+    * *ID\_Partecipazione* (PK)
+    * Ruolo
+    * Remunerazione
+
+---
+
+### **Relationships:**
+
+* **Radio –\[1\:N]– Programma**
+  Una Radio può trasmettere molti Programmi.
+
+* **Radio –\[1\:N]– Report**
+  Ogni Report è legato a una Radio.
+
+* **Programma –\[1\:N]– Episodio**
+  Ogni Programma può avere molti Episodi.
+
+* **Episodio –\[M\:N]– Partecipazione –\[M:1]– Persona**
+  Le persone partecipano agli episodi in vari ruoli.
+
+* **Dipendente –\[N:1]– Reparto**
+  Ogni dipendente appartiene a un reparto.
+
+* **Contratto\_Dipendente –\[1:1]– Dipendente**
+  Ogni contratto è associato a un solo dipendente.
+
+* **Contratto\_Sponsor –\[1:1]– Programma**
+  Ogni sponsorizzazione è legata a un programma.
+
+* **Cantante –\[M\:N]– Brano**
+  Un cantante può cantare più brani e viceversa.
+
+* **Brano –\[M\:N]– Playlist\_Musicale tramite Content\_Playlist**
+  Ogni brano può essere in più playlist.
+
+* **Content\_Playlist –\[M\:N]– Episodio**
+  Anche gli episodi possono essere messi nelle playlist.
+
+* **Trasmissione –\[M\:N]– Episodio/Brano (a seconda del tipo)**
+  Una trasmissione contiene uno o più elementi audio/visivi.
+
+* **Persona –\[M\:N]– Professione**
+  Una persona può avere più professioni e viceversa.
+
+* **Report –\[M\:N]– Persona (soggetti segnalati o testimoni)**
+
+---
+
+This structure satisfies:
+
+* Minimum of 14 base entities (actually more here).
+* Clear ISA hierarchies (Dipendente, Cantante, Playlist, Pubblicità).
+* Coverage of functional aspects: people, transmission, content, governance, compliance (report), and financial (contratti).
+
+If you want the logical model or a `.txt` version of this schema, just ask!
