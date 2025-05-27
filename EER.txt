@@ -1,0 +1,92 @@
+Radio
+  ID_Radio*
+  Nome_Radio
+  Descrizione_Radio
+  Frequenza
+  Tipologia_Radio
+
+Report
+  ID_Report*
+  Data_Report
+  Firma
+  Descrizione_Report
+
+Programma
+  ID_Programma*
+  Trama_Programma
+
+Pubblicita' (IS A Programma)
+  ID_Pubblicita' *
+  Prodotto_Promosso
+  Slogan
+
+Playlist_Musicale (IS A Programma)
+  ID_Playlist*
+  Nome_Playlist
+  Descrizione_Playlist
+
+Content_Playlist ** 
+  ID_Content_Playlist*
+
+Episodio
+  ID_Episodio*
+  Titolo
+  Durata
+  Trama_e_Descrizione
+
+Partecipazione
+  ID_Partecipazione*
+
+
+Trasmissione
+  ID_Trasmissione*
+  Data_Trasmissione
+
+Persona
+  ID_Persona*
+  Nome
+  Cognome
+  Data_Nascita
+  Luogo_Nascita
+
+Dipendente(IS A Persona)
+  ID_Dipendente*
+  
+Cantante(IS A Persona)
+  ID_Cantante*
+  Pseudonimo
+  Data_Inizio_Carriera
+
+Brano
+  ID_Brano*
+  Nome_Brano
+
+Genere
+  ID_Genere*
+  Descrizione_Genere
+
+Professione
+  ID_Professione*
+  Descrizione_Professione
+  Campo_Professione
+
+Contratto
+  ID_Contratto*
+  Data_Inizio
+  Durata
+  Ricavo
+
+Contratto_Sponsor (IS A Contratto)
+  ID_ContrattoSponsor*
+
+Contratto_Dipendente (IS A Contratto)
+  ID_Contratto_Dipendente*
+
+Reparto
+  ID_Reparto*
+  Nome_Reparto
+  Descrizione_Reparto
+
+
+
+
